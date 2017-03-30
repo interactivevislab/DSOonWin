@@ -27,6 +27,9 @@
 
 #include <string.h>
 #include <string>
+#ifdef _DSO_ON_WIN
+#define _USE_MATH_DEFINES
+#endif
 #include <cmath>
 
 

@@ -32,7 +32,11 @@ namespace dso
 enum PixelSelectorStatus {PIXSEL_VOID=0, PIXSEL_1, PIXSEL_2, PIXSEL_3};
 
 
+#ifdef _DSO_ON_WIN
+struct FrameHessian;
+#else
 class FrameHessian;
+#endif
 
 class PixelSelector
 {

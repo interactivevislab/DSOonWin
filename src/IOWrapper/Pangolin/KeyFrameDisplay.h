@@ -34,8 +34,13 @@
 
 namespace dso
 {
-class CalibHessian;
-class FrameHessian;
+#ifdef _DSO_ON_WIN
+	struct CalibHessian;
+	struct FrameHessian;
+#else
+	class CalibHessian;
+	class FrameHessian;
+#endif
 class FrameShell;
 
 namespace IOWrap

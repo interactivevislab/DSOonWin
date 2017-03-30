@@ -27,6 +27,8 @@
 #include "util/FrameShell.h"
 #include "FullSystem/ResidualProjections.h"
 
+#include "win/swap.h"
+
 namespace dso
 {
 ImmaturePoint::ImmaturePoint(int u_, int v_, FrameHessian* host_, float type, CalibHessian* HCalib)
@@ -396,8 +398,11 @@ ImmaturePointStatus ImmaturePoint::traceOn(FrameHessian* frame, Mat33f hostToFra
 		idepth_min = (pr[2]*(bestV-errorInPixel*dy) - pr[1]) / (hostToFrame_Kt[1] - hostToFrame_Kt[2]*(bestV-errorInPixel*dy));
 		idepth_max = (pr[2]*(bestV+errorInPixel*dy) - pr[1]) / (hostToFrame_Kt[1] - hostToFrame_Kt[2]*(bestV+errorInPixel*dy));
 	}
+#ifdef _DSO_ON_WIN
+	if(idepth_min > idepth_max) dso::swap<float>(idepth_min, idepth_max);
+#else
 	if(idepth_min > idepth_max) std::swap<float>(idepth_min, idepth_max);
-
+#endif
 
 	if(!std::isfinite(idepth_min) || !std::isfinite(idepth_max) || (idepth_max<0))
 	{
@@ -535,7 +540,7 @@ double ImmaturePoint::linearizeResidual(
 	}
 	else
 	{
-		tmpRes->state_NewState = ResState::IN;
+		tmpRes->state_NewState = ResState::IN_2;
 	}
 
 	tmpRes->state_NewEnergy = energyLeft;

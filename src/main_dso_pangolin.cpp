@@ -28,7 +28,9 @@
 #include <signal.h>
 #include <stdlib.h>
 #include <stdio.h>
+#ifndef _DSO_ON_WIN
 #include <unistd.h>
+#endif
 
 #include "IOWrapper/Output3DWrapper.h"
 #include "IOWrapper/ImageDisplay.h"
@@ -49,6 +51,7 @@
 
 #include "IOWrapper/Pangolin/PangolinDSOViewer.h"
 #include "IOWrapper/OutputWrapper/SampleOutputWrapper.h"
+#include "win/usleep.h"
 
 
 std::string vignette = "";
@@ -81,6 +84,7 @@ void my_exit_handler(int s)
 
 void exitThread()
 {
+#ifndef _DSO_ON_WIN
 	struct sigaction sigIntHandler;
 	sigIntHandler.sa_handler = my_exit_handler;
 	sigemptyset(&sigIntHandler.sa_mask);
@@ -89,6 +93,7 @@ void exitThread()
 
 	firstRosSpin=true;
 	while(true) pause();
+#endif
 }
 
 

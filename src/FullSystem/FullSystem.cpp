@@ -54,6 +54,9 @@
 
 #include "util/ImageAndExposure.h"
 
+#ifdef _DSO_ON_WIN
+#define _USE_MATH_DEFINES
+#endif
 #include <cmath>
 
 namespace dso
@@ -1075,11 +1078,11 @@ void FullSystem::makeKeyFrame( FrameHessian* fh)
 		for(PointHessian* ph : fh1->pointHessians)
 		{
 			PointFrameResidual* r = new PointFrameResidual(ph, fh1, fh);
-			r->setState(ResState::IN);
+			r->setState(ResState::IN_2);
 			ph->residuals.push_back(r);
 			ef->insertResidual(r);
 			ph->lastResiduals[1] = ph->lastResiduals[0];
-			ph->lastResiduals[0] = std::pair<PointFrameResidual*, ResState>(r, ResState::IN);
+			ph->lastResiduals[0] = std::pair<PointFrameResidual*, ResState>(r, ResState::IN_2);
 			numFwdResAdde+=1;
 		}
 	}

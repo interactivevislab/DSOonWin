@@ -37,6 +37,8 @@
 #include "IOWrapper/ImageRW.h"
 #include <algorithm>
 
+#include "win/swap.h"
+
 namespace dso
 {
 
@@ -138,7 +140,7 @@ void CoarseTracker::makeCoarseDepthL0(std::vector<FrameHessian*> frameHessians)
 	{
 		for(PointHessian* ph : fh->pointHessians)
 		{
-			if(ph->lastResiduals[0].first != 0 && ph->lastResiduals[0].second == ResState::IN)
+			if(ph->lastResiduals[0].first != 0 && ph->lastResiduals[0].second == ResState::IN_2)
 			{
 				PointFrameResidual* r = ph->lastResiduals[0].first;
 				assert(r->efResidual->isActive() && r->target == lastRef);
@@ -917,7 +919,11 @@ void CoarseDistanceMap::growDistBFS(int bfsNum)
 	for(int k=1;k<40;k++)
 	{
 		int bfsNum2 = bfsNum;
+#ifdef _DSO_ON_WIN
+		dso::swap<Eigen::Vector2i*>(bfsList1,bfsList2);
+#else
 		std::swap<Eigen::Vector2i*>(bfsList1,bfsList2);
+#endif
 		bfsNum=0;
 
 		if(k%2==0)

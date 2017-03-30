@@ -1,6 +1,6 @@
 /**
 * This file is part of DSO.
-* 
+*
 * Copyright 2016 Technical University of Munich and Intel.
 * Developed by Jakob Engel <engelj at in dot tum dot de>,
 * for more information see <http://vision.in.tum.de/dso>.
@@ -37,6 +37,7 @@
 #include "FullSystem/PixelSelector2.h"
 #include "util/nanoflann.h"
 
+#include "win/swap.h"
 
 namespace dso
 {
@@ -920,7 +921,11 @@ void CoarseInitializer::applyStep(int lvl)
 		pts[i].idepth = pts[i].idepth_new;
 		pts[i].lastHessian = pts[i].lastHessian_new;
 	}
+#ifdef _DSO_ON_WIN
+	dso::swap<Vec10f*>(JbBuffer, JbBuffer_new);
+#else
 	std::swap<Vec10f*>(JbBuffer, JbBuffer_new);
+#endif
 }
 
 void CoarseInitializer::makeK(CalibHessian* HCalib)

@@ -38,6 +38,9 @@
 #include "OptimizationBackend/EnergyFunctional.h"
 #include "OptimizationBackend/EnergyFunctionalStructs.h"
 
+#ifdef _DSO_ON_WIN
+#define _USE_MATH_DEFINES
+#endif
 #include <cmath>
 
 #include <algorithm>

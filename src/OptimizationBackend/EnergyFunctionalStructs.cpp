@@ -28,6 +28,7 @@
 #include "FullSystem/HessianBlocks.h"
 #include "FullSystem/Residuals.h"
 
+#include "win/swap.h"
 
 
 namespace dso
@@ -36,7 +37,11 @@ namespace dso
 
 void EFResidual::takeDataF()
 {
+#ifdef _DSO_ON_WIN
+	dso::swap<RawResidualJacobian*>(J, data->J);
+#else
 	std::swap<RawResidualJacobian*>(J, data->J);
+#endif
 
 	Vec2f JI_JI_Jd = J->JIdx2 * J->Jpdd;
 

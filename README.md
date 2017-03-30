@@ -1,3 +1,17 @@
+
+# Windows Compilation
+
+This version compiles, links an runs in Visual Studio 2015 Community Edition - Update 3, Windows 10 at 64bits.
+
+There are a couple of things that have to be done manually:
+1- Open Visual Studio and open the NuGet Mananger - click the option to restore the packages.
+
+2- on the file
+\DSOonWin\VS2015\packages\SuiteSparseMetis_5.1.0_4.2.1.1.0.2\build\native\SuiteSparseMetis_5.1.0_4.2.1.targets
+replace the preprocessor flag HAS_SuiteSparseMetis_5.1.0_4.2.1 for HAS_SuiteSparseMetis_5_1_0_4_2_1
+
+That's all.
+
 # DSO: Direct Sparse Odometry
 
 For more information see
@@ -26,10 +40,10 @@ Required. Install with
 
 ##### OpenCV (highly recommended).
 Used to read / write / display images.
-OpenCV is **only** used in `IOWrapper/OpenCV/*`. Without OpenCV, respective 
+OpenCV is **only** used in `IOWrapper/OpenCV/*`. Without OpenCV, respective
 dummy functions from `IOWrapper/*_dummy.cpp` will be compiled into the library, which do nothing.
 The main binary will not be created, since it is useless if it can't read the datasets from disk.
-Feel free to implement your own version of these functions with your prefered library, 
+Feel free to implement your own version of these functions with your prefered library,
 if you want to stay away from OpenCV.
 
 Install with
@@ -39,17 +53,17 @@ Install with
 
 ##### Pangolin (highly recommended).
 Used for 3D visualization & the GUI.
-Pangolin is **only** used in `IOWrapper/Pangolin/*`. You can compile without Pangolin, 
-however then there is not going to be any visualization / GUI capability. 
-Feel free to implement your own version of `Output3DWrapper` with your preferred library, 
+Pangolin is **only** used in `IOWrapper/Pangolin/*`. You can compile without Pangolin,
+however then there is not going to be any visualization / GUI capability.
+Feel free to implement your own version of `Output3DWrapper` with your preferred library,
 and use it instead of `PangolinDSOViewer`
 
 Install from [https://github.com/stevenlovegrove/Pangolin](https://github.com/stevenlovegrove/Pangolin)
 
 
 ##### ziplib (recommended).
-Used to read datasets with images as .zip, as e.g. in the TUM monoVO dataset. 
-You can compile without this, however then you can only read images directly (i.e., have 
+Used to read datasets with images as .zip, as e.g. in the TUM monoVO dataset.
+You can compile without this, however then you can only read images directly (i.e., have
 to unzip the dataset image archives before loading them).
 
 	sudo apt-get install zlib1g-dev
@@ -68,8 +82,8 @@ to unzip the dataset image archives before loading them).
 		cd build
 		cmake ..
 		make -j
-	
-this will compile a library `libdso.a`, which can be linked from external projects. 
+
+this will compile a library `libdso.a`, which can be linked from external projects.
 It will also build a binary `dso_dataset`, to run DSO on datasets. However, for this
 OpenCV and Pangolin need to be installed.
 
@@ -90,7 +104,7 @@ Run on a dataset from [https://vision.in.tum.de/mono-dataset](https://vision.in.
 			mode=0
 
 See [https://github.com/JakobEngel/dso_ros](https://github.com/JakobEngel/dso_ros) for a minimal example on
-how the library can be used from another project. It should be straight forward to implement extentions for 
+how the library can be used from another project. It should be straight forward to implement extentions for
 other camera drivers, to use DSO interactively without ROS.
 
 
@@ -149,23 +163,23 @@ Furthermore, it should be straight-forward to implement other camera models.
 
 
 **Explanation:**
- Across all models `fx fy cx cy` denotes the focal length / principal point **relative to the image width / height**, 
+ Across all models `fx fy cx cy` denotes the focal length / principal point **relative to the image width / height**,
 i.e., DSO computes the camera matrix `K` as
 
 		K(0,0) = width * fx
 		K(1,1) = width * fy
 		K(0,2) = width * cx - 0.5
 		K(1,2) = width * cy - 0.5
-For backwards-compatibility, if the given `cx` and `cy` are larger than 1, DSO assumes all four parameters to directly be the entries of K, 
-and ommits the above computation. 
+For backwards-compatibility, if the given `cx` and `cy` are larger than 1, DSO assumes all four parameters to directly be the entries of K,
+and ommits the above computation.
 
 
 **That strange "0.5" offset:**
- Internally, DSO uses the convention that the pixel at integer position (1,1) in the image 
-contains the integral over the continuous image function from (0.5,0.5) to (1.5,1.5), i.e., approximates a "point-sample" of the 
+ Internally, DSO uses the convention that the pixel at integer position (1,1) in the image
+contains the integral over the continuous image function from (0.5,0.5) to (1.5,1.5), i.e., approximates a "point-sample" of the
 continuous image functions at (1.0, 1.0).
 In turn, there seems to be no unifying convention across calibration toolboxes whether the pixel at integer position (1,1)
-contains the integral over (0.5,0.5) to (1.5,1.5), or the integral over (1,1) to (0,0). The above conversion assumes that 
+contains the integral over (0.5,0.5) to (1.5,1.5), or the integral over (1,1) to (0,0). The above conversion assumes that
 the given calibration in the calibration file uses the latter convention, and thus applies the -0.5 correction.
 Note that this also is taken into account when creating the scale-pyramid (see `globalCalib.cpp`).
 
@@ -173,8 +187,8 @@ Note that this also is taken into account when creating the scale-pyramid (see `
 **Rectification modes:**
  For image rectification, DSO either supports rectification to a user-defined pinhole model (`fx fy cx cy 0`),
 or has an option to automatically crop the image to the maximal rectangular, well-defined region (`crop`).
-`full` will preserve the full original field of view and is mainly meant for debugging - it will create black 
-borders in undefined image regions, which DSO does NOT ignore (i.e., this option will generate additional 
+`full` will preserve the full original field of view and is mainly meant for debugging - it will create black
+borders in undefined image regions, which DSO does NOT ignore (i.e., this option will generate additional
 outliers along those borders, and corrupt the scale-pyramid).
 
 
@@ -182,9 +196,9 @@ outliers along those borders, and corrupt the scale-pyramid).
 
 #### 3.2 Commandline Options
 there are many command line options available, see `main_dso_pangolin.cpp`. some examples include
-- `mode=X`: 
-    -  `mode=0` use iff a photometric calibration exists (e.g. TUM monoVO dataset). 
-    -  `mode=1` use iff NO photometric calibration exists (e.g. ETH EuRoC MAV dataset). 
+- `mode=X`:
+    -  `mode=0` use iff a photometric calibration exists (e.g. TUM monoVO dataset).
+    -  `mode=1` use iff NO photometric calibration exists (e.g. ETH EuRoC MAV dataset).
     -  `mode=2` use iff images are not photometrically distorted (e.g. synthetic datasets).
 
 - `preset=X`
@@ -214,7 +228,7 @@ Some parameters can be reconfigured from the Pangolin GUI at runtime. Feel free 
 #### 3.4 Accessing Data.
 The easiest way to access the Data (poses, pointclouds, etc.) computed by DSO (in real-time)
 is to create your own `Output3DWrapper`, and add it to the system, i.e., to `FullSystem.outputWrapper`.
-The respective member functions will be called on various occations (e.g., when a new KF is created, 
+The respective member functions will be called on various occations (e.g., when a new KF is created,
 when a new frame is tracked, etc.), exposing the relevant data.
 
 See `IOWrapper/Output3DWrapper.h` for a description of the different callbacks available,
@@ -263,8 +277,8 @@ If your computer is slow, try to use "fast" settings. Or run DSO on a dataset, w
 
 
 #### Initialization
-The current initializer is not very good... it is very slow and occasionally fails. 
-Make sure, the initial camera motion is slow and "nice" (i.e., a lot of translation and 
+The current initializer is not very good... it is very slow and occasionally fails.
+Make sure, the initial camera motion is slow and "nice" (i.e., a lot of translation and
 little rotation) during initialization.
 Possibly replace by your own initializer.
 

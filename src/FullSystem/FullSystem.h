@@ -25,6 +25,10 @@
 #pragma once
 #define MAX_ACTIVE_FRAMES 100
 
+#ifdef _DSO_ON_WIN
+#include <deque>
+#endif
+
 #include "util/NumType.h"
 #include "util/globalCalib.h"
 #include "vector"

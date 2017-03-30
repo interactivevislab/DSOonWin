@@ -59,7 +59,7 @@ PointHessian* FullSystem::optimizeImmaturePoint(
 		{
 			residuals[nres].state_NewEnergy = residuals[nres].state_energy = 0;
 			residuals[nres].state_NewState = ResState::OUTLIER;
-			residuals[nres].state_state = ResState::IN;
+			residuals[nres].state_state = ResState::IN_2;
 			residuals[nres].target = fh;
 			nres++;
 		}
@@ -156,7 +156,7 @@ PointHessian* FullSystem::optimizeImmaturePoint(
 
 	int numGoodRes=0;
 	for(int i=0;i<nres;i++)
-		if(residuals[i].state_state == ResState::IN) numGoodRes++;
+		if(residuals[i].state_state == ResState::IN_2) numGoodRes++;
 
 	if(numGoodRes < minObs)
 	{
@@ -178,23 +178,23 @@ PointHessian* FullSystem::optimizeImmaturePoint(
 	p->setPointStatus(PointHessian::ACTIVE);
 
 	for(int i=0;i<nres;i++)
-		if(residuals[i].state_state == ResState::IN)
+		if(residuals[i].state_state == ResState::IN_2)
 		{
 			PointFrameResidual* r = new PointFrameResidual(p, p->host, residuals[i].target);
 			r->state_NewEnergy = r->state_energy = 0;
 			r->state_NewState = ResState::OUTLIER;
-			r->setState(ResState::IN);
+			r->setState(ResState::IN_2);
 			p->residuals.push_back(r);
 
 			if(r->target == frameHessians.back())
 			{
 				p->lastResiduals[0].first = r;
-				p->lastResiduals[0].second = ResState::IN;
+				p->lastResiduals[0].second = ResState::IN_2;
 			}
 			else if(r->target == (frameHessians.size()<2 ? 0 : frameHessians[frameHessians.size()-2]))
 			{
 				p->lastResiduals[1].first = r;
-				p->lastResiduals[1].second = ResState::IN;
+				p->lastResiduals[1].second = ResState::IN_2;
 			}
 		}
 

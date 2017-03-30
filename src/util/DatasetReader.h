@@ -29,7 +29,9 @@
 
 #include <sstream>
 #include <fstream>
+#ifndef _DSO_ON_WIN
 #include <dirent.h>
+#endif
 #include <algorithm>
 
 #include "util/Undistort.h"
@@ -40,6 +42,8 @@
 #endif
 
 #include <boost/thread.hpp>
+#include <boost/filesystem.hpp>
+#include <boost/range/iterator_range.hpp>
 
 using namespace dso;
 
@@ -47,6 +51,34 @@ using namespace dso;
 
 inline int getdir (std::string dir, std::vector<std::string> &files)
 {
+#ifdef _DSO_ON_WIN
+	using namespace boost::filesystem;
+
+	path p(dir);
+
+	if (is_directory(p)) {
+		std::cout << p << " is a directory containing:\n";
+
+		for (directory_entry& entry : boost::make_iterator_range(directory_iterator(p), {}))
+		{
+			std::cout << entry << "\n";
+			if (entry.path().has_filename())
+				files.push_back(entry.path().filename().string());
+		}
+
+		std::sort(files.begin(), files.end());
+		if (dir.at(dir.length() - 1) != '/') dir = dir + "/";
+		for (unsigned int i = 0; i < files.size(); i++)
+		{
+			if (files[i].at(0) != '/')
+				files[i] = dir + files[i];
+		}
+
+		return files.size();
+	}
+
+	return 0;
+#else
     DIR *dp;
     struct dirent *dirp;
     if((dp  = opendir(dir.c_str())) == NULL)
@@ -73,6 +105,7 @@ inline int getdir (std::string dir, std::vector<std::string> &files)
 	}
 
     return files.size();
+#endif //_DSO_ON_WIN
 }
 
 

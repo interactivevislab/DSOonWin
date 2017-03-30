@@ -30,12 +30,18 @@
 #include <map>
 #include <deque>
 
+#include "win/timeval.h"
 
 namespace dso
 {
 
-class FrameHessian;
-class CalibHessian;
+#ifdef _DSO_ON_WIN
+	struct CalibHessian;
+	struct FrameHessian;
+#else
+	class FrameHessian;
+	class CalibHessian;
+#endif
 class FrameShell;
 
 
