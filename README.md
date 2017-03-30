@@ -11,7 +11,7 @@ There are a couple of things that have to be done manually:
 \DSOonWin\VS2015\packages\SuiteSparseMetis_5.1.0_4.2.1.1.0.2\build\native\SuiteSparseMetis_5.1.0_4.2.1.targets
 replace the preprocessor flag HAS_SuiteSparseMetis_5.1.0_4.2.1 for HAS_SuiteSparseMetis_5_1_0_4_2_1
 
-That's all - all the credit to this SLAM implementation goes to [Jakob Engel](https://github.com/JakobEngel/dso.git) and the [https://vision.in.tum.de/](TMU team).
+That's all - all the credit to this SLAM implementation goes to [Jakob Engel](https://github.com/JakobEngel/dso.git) and the [TMU team](https://vision.in.tum.de/).
 
 # DSO: Direct Sparse Odometry
 
