@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\FullSystem">
+      <UniqueIdentifier>{084d83fc-cdfa-4551-8ec5-9fa044408b5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\IOWrapper">
+      <UniqueIdentifier>{c71a7876-19c3-4254-8b87-770b2b51cd5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\IOWrapper\Pangolin">
+      <UniqueIdentifier>{1e973c90-289c-4655-8b29-aecd25436448}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\IOWrapper\OpenCV">
+      <UniqueIdentifier>{104b1b4e-e560-43cd-9629-82c55eb6c742}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\IOWrapper\OutputWrapper">
+      <UniqueIdentifier>{bf8b6bca-c10b-4665-b5f4-2f8dfc044e21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\OptimizationBackend">
+      <UniqueIdentifier>{6dcd1d00-385d-435e-885b-837b93f2fd1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Util">
+      <UniqueIdentifier>{25e2884d-bc7b-4312-81e4-5e1d3ee89fdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FullSystem">
+      <UniqueIdentifier>{77274559-fe33-4da4-8866-bf14689d3670}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\IOWrapper">
+      <UniqueIdentifier>{d6bd71ee-f5c6-4157-ab87-080e4891dc9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\IOWrapper\Pangolin">
+      <UniqueIdentifier>{e14612d2-b4bf-46ee-856d-787cdae1a0fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\IOWrapper\OutputWrapper">
+      <UniqueIdentifier>{6eb7b8bc-0374-4e28-817e-58dcaafe9520}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\IOWrapper\OpenCV">
+      <UniqueIdentifier>{880ac565-de35-43d9-8067-b957b47885cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\OptimizationBackend">
+      <UniqueIdentifier>{474a3913-50c8-431e-8fdc-4d79561dd687}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Util">
+      <UniqueIdentifier>{99523625-6a5d-4040-ae1f-2e88d84ea330}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Source\FullSystem\CoarseInitializer.h">
+      <Filter>Header Files\FullSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\FullSystem\CoarseTracker.h">
+      <Filter>Header Files\FullSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\FullSystem\FullSystem.h">
+      <Filter>Header Files\FullSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\FullSystem\HessianBlocks.h">
+      <Filter>Header Files\FullSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\FullSystem\ImmaturePoint.h">
+      <Filter>Header Files\FullSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\FullSystem\PixelSelector.h">
+      <Filter>Header Files\FullSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\FullSystem\PixelSelector2.h">
+      <Filter>Header Files\FullSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\FullSystem\ResidualProjections.h">
+      <Filter>Header Files\FullSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\FullSystem\Residuals.h">
+      <Filter>Header Files\FullSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\IOWrapper\ImageDisplay.h">
+      <Filter>Header Files\IOWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\IOWrapper\ImageRW.h">
+      <Filter>Header Files\IOWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\IOWrapper\Output3DWrapper.h">
+      <Filter>Header Files\IOWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\OptimizationBackend\AccumulatedSCHessian.h">
+      <Filter>Header Files\OptimizationBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\OptimizationBackend\AccumulatedTopHessian.h">
+      <Filter>Header Files\OptimizationBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\OptimizationBackend\EnergyFunctional.h">
+      <Filter>Header Files\OptimizationBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\OptimizationBackend\EnergyFunctionalStructs.h">
+      <Filter>Header Files\OptimizationBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\OptimizationBackend\MatrixAccumulators.h">
+      <Filter>Header Files\OptimizationBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\OptimizationBackend\RawResidualJacobian.h">
+      <Filter>Header Files\OptimizationBackend</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Util\FrameShell.h">
+      <Filter>Header Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Util\globalCalib.h">
+      <Filter>Header Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Util\globalFuncs.h">
+      <Filter>Header Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Util\ImageAndExposure.h">
+      <Filter>Header Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Util\IndexThreadReduce.h">
+      <Filter>Header Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Util\MinimalImage.h">
+      <Filter>Header Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Util\nanoflann.h">
+      <Filter>Header Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Util\NumType.h">
+      <Filter>Header Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Util\settings.h">
+      <Filter>Header Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Util\Undistort.h">
+      <Filter>Header Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\IOWrapper\OutputWrapper\SampleOutputWrapper.h">
+      <Filter>Header Files\IOWrapper\OutputWrapper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\IOWrapper\Pangolin\KeyFrameDisplay.h">
+      <Filter>Header Files\IOWrapper\Pangolin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\IOWrapper\Pangolin\PangolinDSOViewer.h">
+      <Filter>Header Files\IOWrapper\Pangolin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Util\DatasetReader.h">
+      <Filter>Header Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Util\timeval.h">
+      <Filter>Header Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Util\swap.h">
+      <Filter>Header Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Util\allocAligned.h">
+      <Filter>Header Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Util\usleep.h">
+      <Filter>Header Files\Util</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Source\FullSystem\CoarseInitializer.cpp">
+      <Filter>Source Files\FullSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\FullSystem\CoarseTracker.cpp">
+      <Filter>Source Files\FullSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\FullSystem\FullSystem.cpp">
+      <Filter>Source Files\FullSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\FullSystem\FullSystemDebugStuff.cpp">
+      <Filter>Source Files\FullSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\FullSystem\FullSystemMarginalize.cpp">
+      <Filter>Source Files\FullSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\FullSystem\FullSystemOptimize.cpp">
+      <Filter>Source Files\FullSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\FullSystem\FullSystemOptPoint.cpp">
+      <Filter>Source Files\FullSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\FullSystem\HessianBlocks.cpp">
+      <Filter>Source Files\FullSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\FullSystem\ImmaturePoint.cpp">
+      <Filter>Source Files\FullSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\FullSystem\PixelSelector2.cpp">
+      <Filter>Source Files\FullSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\FullSystem\Residuals.cpp">
+      <Filter>Source Files\FullSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\IOWrapper\Pangolin\KeyFrameDisplay.cpp">
+      <Filter>Source Files\IOWrapper\Pangolin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\IOWrapper\Pangolin\PangolinDSOViewer.cpp">
+      <Filter>Source Files\IOWrapper\Pangolin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\OptimizationBackend\AccumulatedSCHessian.cpp">
+      <Filter>Source Files\OptimizationBackend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\OptimizationBackend\AccumulatedTopHessian.cpp">
+      <Filter>Source Files\OptimizationBackend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\OptimizationBackend\EnergyFunctional.cpp">
+      <Filter>Source Files\OptimizationBackend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\OptimizationBackend\EnergyFunctionalStructs.cpp">
+      <Filter>Source Files\OptimizationBackend</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Util\globalCalib.cpp">
+      <Filter>Source Files\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Util\settings.cpp">
+      <Filter>Source Files\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Util\Undistort.cpp">
+      <Filter>Source Files\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\main_dso_pangolin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\IOWrapper\OpenCV\ImageDisplay_OpenCV.cpp">
+      <Filter>Source Files\IOWrapper\OpenCV</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\IOWrapper\OpenCV\ImageRW_OpenCV.cpp">
+      <Filter>Source Files\IOWrapper\OpenCV</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

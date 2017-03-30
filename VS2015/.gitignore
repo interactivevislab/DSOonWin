@@ -1,0 +1,9 @@
+.vs
+*.db
+*.opendb
+*.db
+*.opendb
+*.vcxproj.user
+/dataset/
+/packages/
+/x64
