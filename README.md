@@ -4,13 +4,14 @@
 This version compiles, links an runs in Visual Studio 2015 Community Edition - Update 3, Windows 10 at 64bits.
 
 There are a couple of things that have to be done manually:
+
 1- Open Visual Studio and open the NuGet Mananger - click the option to restore the packages.
 
 2- on the file
 \DSOonWin\VS2015\packages\SuiteSparseMetis_5.1.0_4.2.1.1.0.2\build\native\SuiteSparseMetis_5.1.0_4.2.1.targets
 replace the preprocessor flag HAS_SuiteSparseMetis_5.1.0_4.2.1 for HAS_SuiteSparseMetis_5_1_0_4_2_1
 
-That's all.
+That's all - all the credit to this SLAM implementation goes to [https://github.com/JakobEngel/dso.git](Jakob Engel) and the [https://vision.in.tum.de/](TMU team).
 
 # DSO: Direct Sparse Odometry
 
