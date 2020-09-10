@@ -824,7 +824,7 @@ void FullSystem::addActiveFrame( ImageAndExposure* image, int id )
 	// =========================== make Images / derivatives etc. =========================
 	fh->ab_exposure = image->exposure_time;
     fh->makeImages(image->image, &Hcalib);
-
+	printf("\naddActiveFrame1\n");
 
 
 
@@ -833,22 +833,25 @@ void FullSystem::addActiveFrame( ImageAndExposure* image, int id )
 		// use initializer!
 		if(coarseInitializer->frameID<0)	// first frame set. fh is kept by coarseInitializer.
 		{
-
+			printf("\n1\n");
 			coarseInitializer->setFirst(&Hcalib, fh);
 		}
 		else if(coarseInitializer->trackFrame(fh, outputWrapper))	// if SNAPPED
 		{
-
+			printf("\n2\n");
 			initializeFromInitializer(fh);
 			lock.unlock();
 			deliverTrackedFrame(fh, true);
 		}
 		else
 		{
+			printf("\n3\n");
 			// if still initializing
 			fh->shell->poseValid = false;
 			delete fh;
 		}
+		printf("\naddActiveFrame2\n");
+
 		return;
 	}
 	else	// do front-end operation.
@@ -891,8 +894,7 @@ void FullSystem::addActiveFrame( ImageAndExposure* image, int id )
 		}
 
 
-
-
+		
         for(IOWrap::Output3DWrapper* ow : outputWrapper)
             ow->publishCamPose(fh->shell, &Hcalib);
 
@@ -901,6 +903,7 @@ void FullSystem::addActiveFrame( ImageAndExposure* image, int id )
 
 		lock.unlock();
 		deliverTrackedFrame(fh, needToMakeKF);
+		
 		return;
 	}
 }

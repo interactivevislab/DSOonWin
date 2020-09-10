@@ -48,7 +48,6 @@
 #include "FullSystem/PixelSelector2.h"
 
 
-
 #include "IOWrapper/Pangolin/PangolinDSOViewer.h"
 #include "IOWrapper/OutputWrapper/SampleOutputWrapper.h"
 #include "win/usleep.h"
@@ -448,8 +447,10 @@ int main( int argc, char** argv )
             {
                 int i = idsToPlay[ii];
                 preloadedImages.push_back(reader->getImage(i));
+				printf("LOAD  IMAGES   %d!\n",ii);
             }
         }
+
 
         struct timeval tv_start;
         gettimeofday(&tv_start, NULL);
@@ -470,14 +471,20 @@ int main( int argc, char** argv )
 
 
             ImageAndExposure* img;
-            if(preload)
-                img = preloadedImages[ii];
-            else
-                img = reader->getImage(i);
+			if (preload)
+			{
+				img = preloadedImages[ii];
+				printf("GET PRELOAD IMAGES   %d!\n", ii);
+			}
+			else
+			{
+				img = reader->getImage(i);
+			}
 
 
 
             bool skipFrame=false;
+
             if(playbackSpeed!=0)
             {
                 struct timeval tv_now; gettimeofday(&tv_now, NULL);
@@ -491,7 +498,6 @@ int main( int argc, char** argv )
                     skipFrame=true;
                 }
             }
-
 
 
             if(!skipFrame) fullSystem->addActiveFrame(img, i);
