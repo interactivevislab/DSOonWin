@@ -215,6 +215,17 @@ extern int staticPatternPadding[10];
 //#define patternPadding staticPatternPadding[setting_pattern]
 
 //
+extern bool isSavePCL;
+extern bool isPCLfileClose;
+extern int numPCL;
+extern std::string strTmpFileName;
+extern std::string strSaveFileName;
+extern bool isWritePCL;
+
+
+
+
+
 #define patternNum 8
 #define patternP staticPattern[8]
 #define patternPadding 2
