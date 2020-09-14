@@ -1017,6 +1017,8 @@ void FullSystem::mappingLoop()
 		mappedFrameSignal.notify_all();
 	}
 	printf("MAPPING FINISHED!\n");
+	//getchar();
+
 }
 
 void FullSystem::blockUntilMappingIsFinished()

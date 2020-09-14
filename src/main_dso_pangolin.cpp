@@ -36,6 +36,8 @@
 #include "IOWrapper/ImageDisplay.h"
 
 
+#include <opencv2/highgui/highgui.hpp>
+
 #include <boost/thread.hpp>
 #include "util/settings.h"
 #include "util/globalFuncs.h"
@@ -357,6 +359,8 @@ void parseArgument(char* arg)
 
 int main( int argc, char** argv )
 {
+	cv::VideoCapture cap(5);
+	cv::Mat imageWeb;
 	//setlocale(LC_ALL, "");
 	for(int i=1; i<argc;i++)
 		parseArgument(argv[i]);
@@ -480,7 +484,7 @@ int main( int argc, char** argv )
 			{
 				img = reader->getImage(i);
 			}
-
+		
 
 
             bool skipFrame=false;
@@ -499,6 +503,10 @@ int main( int argc, char** argv )
                 }
             }
 
+
+		
+			
+	
 
             if(!skipFrame) fullSystem->addActiveFrame(img, i);
 

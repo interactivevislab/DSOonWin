@@ -102,11 +102,29 @@ public:
             cxi = -cx / fx;
             cyi = -cy / fy;
 
+            std::ifstream inputFileSettings;
+            inputFileSettings.open("settingsPC.txt");
+
+            char* a=new char[10];
+            inputFileSettings.getline(a, 10);
+           
+
             double absVarTH = 0.00000007197;
+            absVarTH=atof(a);
+            inputFileSettings.getline(a, 10);
+
             double relVarTH = 547;
+            relVarTH= atof(a);
+            inputFileSettings.getline(a, 10);
+
             double minRelativeBS = 0.8988;
+            minRelativeBS=atof(a);
+            inputFileSettings.getline(a, 10);
 
-
+            int my_sparsifyFactor = 0;
+            my_sparsifyFactor = atoi(a);
+            delete(a); 
+            inputFileSettings.close();
             if (final)
             {
                
@@ -122,6 +140,8 @@ public:
                        
                         for (auto const* p : points)
                         {
+
+                            if (my_sparsifyFactor > 1 && rand() % my_sparsifyFactor != 0) continue;
                             //++++++++++
                             float var = (1.0f / (p->idepth_hessian + 0.01));
                             if (var > absVarTH)

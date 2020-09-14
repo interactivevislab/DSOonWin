@@ -32,6 +32,8 @@
 #include "FullSystem/FullSystem.h"
 #include "FullSystem/ImmaturePoint.h"
 
+#include <fstream>
+
 namespace dso
 {
 namespace IOWrap
@@ -184,6 +186,12 @@ void PangolinDSOViewer::run()
 
 				refreshed =+ (int)(fh->refreshPC(refreshed < 10, this->settings_scaledVarTH, this->settings_absVarTH,
 						this->settings_pointCloudMode, this->settings_minRelBS, this->settings_sparsity));
+				std::ofstream outFileSettings;
+				outFileSettings.open("settingsPC.txt");
+				outFileSettings << this->settings_scaledVarTH << "\n" << this->settings_absVarTH << "\n" << this->settings_minRelBS << "\n" << this->settings_sparsity;
+				outFileSettings.close();
+			
+
 				fh->drawPC(1);
 			}
 			if(this->settings_showCurrentCamera) currentCam->drawCam(2,0,0.2);
@@ -286,6 +294,7 @@ void PangolinDSOViewer::run()
 		// Added by Yo Han.
 		if (settings_savePCButton.Get())
 		{
+			
 			printf("Saving [%d] Point Cloud Data....\n", numPCL);
 			settings_savePCButton.Reset();
 			
